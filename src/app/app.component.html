@@ -1,3 +1,23 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane>
+    <ion-menu #menu side="start" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Capacitor</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>API</ion-label>
+          </ion-item-divider>
+          <ion-item (click)="menu.close()" [routerLink]="['/', route.path]" *ngFor="let route of routes">
+            <ion-label>{{route.title}}</ion-label>
+          </ion-item>
+        </ion-item-group>
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

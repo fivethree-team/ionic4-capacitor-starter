@@ -1,0 +1,45 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+
+  desc "Build ios and sign ipa"
+  lane :build do
+    match(force: true)
+
+    gym(
+      workspace: "App.xcworkspace",
+      configuration: "Debug",
+      silent: true
+    )
+  end
+
+  desc "produce app in appstore connect"
+  lane :produce do |options|
+    create_app_online(
+    username: "gary.grossgarten@gmail.com",
+    app_identifier: "de.fivethree.capacitor",
+    app_name: "fivethree capacitor starter",
+    language: "English",
+    app_version: "1.0",
+    sku: "de.fivethree.capacitor",
+    team_name: "Gary Grossgarten"
+    )
+  end
+
+end

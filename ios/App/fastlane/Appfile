@@ -1,0 +1,9 @@
+# app_identifier("[[APP_IDENTIFIER]]") # The bundle identifier of your app
+apple_id("gary.grossgarten@gmail.com") # Your Apple email address
+
+team_id "T8A2X5T48H"
+# To select a team for App Store Connect use
+itc_team_name "Gary Grossgarten"
+itc_team_id "119091779"
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

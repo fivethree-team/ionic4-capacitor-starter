@@ -1,0 +1,4 @@
+scheme("App")
+clean(true)
+output_directory("./outputs")
+output_name("App.ipa") 

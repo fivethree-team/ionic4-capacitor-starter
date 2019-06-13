@@ -1,0 +1,7 @@
+{
+  "appId": "de.fivethree.cap",
+  "appName": "capacitor",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

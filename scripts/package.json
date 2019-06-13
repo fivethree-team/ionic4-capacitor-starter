@@ -1,0 +1,41 @@
+{
+    "name": "scripts",
+    "version": "0.0.1",
+    "description": "billy example app / boilerplate",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fivethree-team/billy-app"
+    },
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "node_modules/.bin/tsc -p .",
+        "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+        "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+        "test": "npm i -g && scripts"
+    },
+    "bin": {
+        "scripts": "dist/index.js"
+    },
+    "preferGlobal": false,
+    "keywords": [
+        "typescript",
+        "cli",
+        "node",
+        "terminal"
+    ],
+    "author": "fivethree",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^10.12.18",
+        "nodemon": "^1.18.9",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.2.2"
+    },
+    "dependencies": {
+        "@fivethree/billy-core": "0.13.1",
+        "@fivethree/billy-plugin-core": "^0.13.1"
+    },
+    "files": [
+        "dist"
+    ]
+}
