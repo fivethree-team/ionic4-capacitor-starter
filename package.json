@@ -11,9 +11,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "init": "cd scripts && npm i && npm run build && node . init",
-    "run:android": "node scripts run --platform android",
-    "run:electron": "node scripts run --platform electron",
-    "run:ios": "node scripts run --platform ios"
+    "android": "node scripts run --platform android",
+    "electron": "node scripts run --platform electron",
+    "ios": "node scripts run --platform ios"
   },
   "private": true,
   "dependencies": {
