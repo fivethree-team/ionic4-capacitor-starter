@@ -37,7 +37,7 @@ export class Scripts {
             const apk = production ? 'release/app-release-unsigned.apk' : 'debug/app-debug.apk';
             await this.exec(`native-run android --app ${ctx.directory}/../android/app/build/outputs/apk/${apk}`, true);
         } else if (plt === 'electron') {
-            // not yet implemented
+            await this.exec(`cd ${ctx.directory}/../electron &&  npx electron ./`, true);
         } else if (plt === 'ios') {
             // not yet implemented
         }
