@@ -27,13 +27,16 @@
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^10.12.18",
+        "@types/puppeteer": "^1.12.4",
         "nodemon": "^1.18.9",
         "ts-node": "^7.0.1",
         "typescript": "^3.2.2"
     },
     "dependencies": {
         "@fivethree/billy-core": "0.13.1",
-        "@fivethree/billy-plugin-core": "^0.13.1"
+        "@fivethree/billy-plugin-core": "^0.13.1",
+        "ora": "^3.4.0",
+        "puppeteer": "^1.17.0"
     },
     "files": [
         "dist"

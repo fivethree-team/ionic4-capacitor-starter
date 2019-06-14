@@ -1,6 +1,9 @@
-import { App, Command, param, context, Context, usesPlugins, Hook, onError, error, afterAll, Action } from '@fivethree/billy-core';
+import { App, Command, param, context, Context, usesPlugins, Hook, onError, error, afterAll } from '@fivethree/billy-core';
 import { CorePlugin } from '@fivethree/billy-plugin-core';
-import { platform, prod } from './params';
+import { launch } from 'puppeteer';
+import { platform, prod, headless } from './params';
+import { devices, routes } from './screenshots';
+import ora from 'ora';
 
 // tslint:disable-next-line:no-empty-interface
 export interface Scripts extends CorePlugin { }
@@ -41,6 +44,35 @@ export class Scripts {
         } else if (plt === 'ios') {
             // not yet implemented
         }
+    }
+
+    @Command('The only thing it really does is output Hello World!')
+    async screenshots(@context() ctx: Context, @param(headless) headl = true) {
+        await this.exec(`rm -rf ${ctx.directory}/../screenshots`, true);
+        await this.exec(`mkdir ${ctx.directory}/../screenshots`, true);
+        const browser = await launch({
+            headless: headl
+        });
+
+        const page = await browser.newPage();
+        const colors: ora.Color[] = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'gray'];
+        for (const device of devices) {
+            const spinner = ora('📸 Taking screenshots').start();
+            const i = devices.findIndex(dev => dev.name === device.name);
+            spinner.color = colors[i % colors.length];
+            page.setUserAgent(device.userAgent);
+            await page.setViewport(device.viewport);
+            for (const r of routes) {
+                spinner.text = `📸 Taking screenshots for ${device.name}: ${r.name}`;
+                await page.goto(`http://localhost:8100/${r.path}`, { waitUntil: 'networkidle2' });
+                await page.screenshot({ path: `${ctx.directory}/../screenshots/${device.name}_${r.name}.png` });
+            }
+            spinner.stop();
+            console.log(`✔ Done taking screenshots for ${device.name}`);
+
+        }
+
+        await browser.close();
     }
 
 

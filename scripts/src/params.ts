@@ -16,6 +16,13 @@ export const platform: ParamOptions = {
     validators: [isString, platformValidator]
 };
 
+export const headless: ParamOptions = {
+    name: 'headless',
+    description: 'Run chrome instance in headless mode [defaults to true]',
+    validators: [isBoolean],
+    optional: true
+};
+
 export const prod: ParamOptions = {
     name: 'prod',
     description: 'Please enter the platform you want to run on. (android, ios or electron)',

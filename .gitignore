@@ -29,6 +29,7 @@ plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
 electron/*
+screenshots/
 
 .DS_Store
 Thumbs.db

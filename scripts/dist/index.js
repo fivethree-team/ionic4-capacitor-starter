@@ -19,10 +19,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const billy_core_1 = require("@fivethree/billy-core");
 const billy_plugin_core_1 = require("@fivethree/billy-plugin-core");
+const puppeteer_1 = require("puppeteer");
 const params_1 = require("./params");
+const screenshots_1 = require("./screenshots");
+const ora_1 = __importDefault(require("ora"));
 let Scripts = class Scripts {
     init(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -60,6 +66,32 @@ let Scripts = class Scripts {
             else if (plt === 'ios') {
                 // not yet implemented
             }
+        });
+    }
+    screenshots(ctx, headl = true) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.exec(`rm -rf ${ctx.directory}/../screenshots`, true);
+            yield this.exec(`mkdir ${ctx.directory}/../screenshots`, true);
+            const browser = yield puppeteer_1.launch({
+                headless: headl
+            });
+            const page = yield browser.newPage();
+            const colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'gray'];
+            for (const device of screenshots_1.devices) {
+                const spinner = ora_1.default('📸 Taking screenshots').start();
+                const i = screenshots_1.devices.findIndex(dev => dev.name === device.name);
+                spinner.color = colors[i % colors.length];
+                page.setUserAgent(device.userAgent);
+                yield page.setViewport(device.viewport);
+                for (const r of screenshots_1.routes) {
+                    spinner.text = `📸 Taking screenshots for ${device.name}: ${r.name}`;
+                    yield page.goto(`http://localhost:8100/${r.path}`, { waitUntil: 'networkidle2' });
+                    yield page.screenshot({ path: `${ctx.directory}/../screenshots/${device.name}_${r.name}.png` });
+                }
+                spinner.stop();
+                console.log(`✔ Done taking screenshots for ${device.name}`);
+            }
+            yield browser.close();
         });
     }
     onError(ctx, err) {
@@ -102,6 +134,13 @@ __decorate([
     __metadata("design:paramtypes", [String, Boolean, Object]),
     __metadata("design:returntype", Promise)
 ], Scripts.prototype, "install", null);
+__decorate([
+    billy_core_1.Command('The only thing it really does is output Hello World!'),
+    __param(0, billy_core_1.context()), __param(1, billy_core_1.param(params_1.headless)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], Scripts.prototype, "screenshots", null);
 __decorate([
     billy_core_1.Hook(billy_core_1.onError),
     __param(0, billy_core_1.context()), __param(1, billy_core_1.error()),

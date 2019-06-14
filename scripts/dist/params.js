@@ -14,6 +14,12 @@ exports.platform = {
     description: 'Please enter the platform you want to run on. (android, ios or electron)',
     validators: [billy_core_1.isString, exports.platformValidator]
 };
+exports.headless = {
+    name: 'headless',
+    description: 'Run chrome instance in headless mode [defaults to true]',
+    validators: [exports.isBoolean],
+    optional: true
+};
 exports.prod = {
     name: 'prod',
     description: 'Please enter the platform you want to run on. (android, ios or electron)',
