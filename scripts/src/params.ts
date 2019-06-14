@@ -1,13 +1,8 @@
-import { ParamOptions, isString, Validator } from '@fivethree/billy-core';
+import { ParamOptions, isString, Validator, isBoolean } from '@fivethree/billy-core';
 
 export const platformValidator: Validator = {
     validate: (param) => ['android', 'ios', 'electron'].some(p => param === p),
     invalidText: (name, param) => `Wrong parameter for ${name}. Valid options [android, ios, electron].`
-};
-
-export const isBoolean: Validator = {
-    validate: (param) => ['true', 'false', true, false, 'y', 'n'].some(p => param === p),
-    invalidText: (name, param) => `Parameter ${name} should either be true or false.`
 };
 
 export const platform: ParamOptions = {

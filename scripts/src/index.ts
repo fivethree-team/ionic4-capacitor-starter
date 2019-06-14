@@ -48,6 +48,7 @@ export class Scripts {
 
     @Command('The only thing it really does is output Hello World!')
     async screenshots(@context() ctx: Context, @param(headless) headl = true) {
+        console.log('headless', headl);
         await this.exec(`rm -rf ${ctx.directory}/../screenshots`, true);
         await this.exec(`mkdir ${ctx.directory}/../screenshots`, true);
         const browser = await launch({

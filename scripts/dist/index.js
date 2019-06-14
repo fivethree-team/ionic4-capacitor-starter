@@ -70,6 +70,7 @@ let Scripts = class Scripts {
     }
     screenshots(ctx, headl = true) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log('headless', headl);
             yield this.exec(`rm -rf ${ctx.directory}/../screenshots`, true);
             yield this.exec(`mkdir ${ctx.directory}/../screenshots`, true);
             const browser = yield puppeteer_1.launch({
