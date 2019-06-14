@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'local-notifications', loadChildren: './local-notifications/local-notifications.module#LocalNotificationsPageModule' },
   { path: 'network', loadChildren: './network/network.module#NetworkPageModule' },
   { path: 'share', loadChildren: './share/share.module#SharePageModule' },
+  { path: 'accessibility', loadChildren: './accessibility/accessibility.module#AccessibilityPageModule' },
 ];
 
 @NgModule({

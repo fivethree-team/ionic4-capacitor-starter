@@ -12,6 +12,7 @@ const { SplashScreen, StatusBar } = Plugins;
 export class AppComponent {
 
   public routes = [
+    { path: 'accessibility', title: 'Accessibility' },
     { path: 'app', title: 'App' },
     { path: 'background-task', title: 'Background Task' },
     { path: 'browser', title: 'Browser' },
@@ -31,7 +32,7 @@ export class AppComponent {
       });
       StatusBar.setStyle({ style: StatusBarStyle.Dark });
       StatusBar.setBackgroundColor({
-        color: '#000'
+        color: '#000000'
       });
     }
   }

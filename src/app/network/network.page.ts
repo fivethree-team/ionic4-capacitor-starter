@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Plugins, NetworkStatus } from '@capacitor/core';
+
+const { Network } = Plugins;
 
 @Component({
   selector: 'app-network',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./network.page.scss'],
 })
 export class NetworkPage implements OnInit {
+  status: NetworkStatus;
 
   constructor() { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.status = await Network.getStatus();
+
+    Network.addListener('networkStatusChange', (status) => {
+      console.log('Network status changed', status);
+      this.status = status;
+    });
+
   }
 
 }

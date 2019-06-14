@@ -32,6 +32,7 @@ export class GeolocationPage implements OnInit {
   watchPosition() {
     const wait = Geolocation.watchPosition({}, (position, err) => {
       if (!err) {
+        console.log('coordinates updated', position);
         this.coordinates = position;
       } else {
         console.log('Error watching for Geolocation', err);
