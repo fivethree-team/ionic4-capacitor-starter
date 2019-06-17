@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "Mikael.Angular-BeastCode",
+    "johnpapa.Angular2",
+    "fivethree.vscode-ionic-snippets",
+    "fivethree.vscode-fivethree-snippets",
+    "angular.ng-template",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode",
+    "msjsdiag.debugger-for-chrome"
+  ]
+}

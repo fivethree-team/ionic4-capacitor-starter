@@ -9,7 +9,6 @@
 log.txt
 *.sublime-project
 *.sublime-workspace
-.vscode/
 npm-debug.log*
 
 .idea/
@@ -34,3 +33,10 @@ screenshots/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
