@@ -5,15 +5,12 @@ const { LocalNotifications } = Plugins;
 @Component({
   selector: 'app-local-notifications',
   templateUrl: './local-notifications.page.html',
-  styleUrls: ['./local-notifications.page.scss'],
+  styleUrls: ['./local-notifications.page.scss']
 })
 export class LocalNotificationsPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   async schedule() {
     try {
@@ -35,7 +32,5 @@ export class LocalNotificationsPage implements OnInit {
     } catch (err) {
       console.log('Error in Local Notifications', err);
     }
-
   }
-
 }

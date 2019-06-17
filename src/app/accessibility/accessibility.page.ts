@@ -6,14 +6,12 @@ const { Accessibility, Modals } = Plugins;
 @Component({
   selector: 'app-accessibility',
   templateUrl: './accessibility.page.html',
-  styleUrls: ['./accessibility.page.scss'],
+  styleUrls: ['./accessibility.page.scss']
 })
 export class AccessibilityPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async speak() {
     try {
@@ -23,12 +21,8 @@ export class AccessibilityPage implements OnInit {
       });
 
       await Accessibility.speak({ value: value.value, language: 'de' });
-
     } catch (err) {
       console.log('Error in Accessibility', err);
     }
-
-
   }
-
 }

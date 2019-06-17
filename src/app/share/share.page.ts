@@ -5,14 +5,12 @@ const { Share } = Plugins;
 @Component({
   selector: 'app-share',
   templateUrl: './share.page.html',
-  styleUrls: ['./share.page.scss'],
+  styleUrls: ['./share.page.scss']
 })
 export class SharePage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async share() {
     try {
@@ -26,7 +24,5 @@ export class SharePage implements OnInit {
     } catch (err) {
       console.log('Error using Share API', err);
     }
-
   }
-
 }

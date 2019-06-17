@@ -4,13 +4,11 @@ import { Platform } from '@ionic/angular';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
 const { SplashScreen, StatusBar } = Plugins;
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-
   public routes = [
     { path: 'accessibility', title: 'Accessibility' },
     { path: 'app', title: 'App' },
@@ -22,10 +20,10 @@ export class AppComponent {
     { path: 'keyboard', title: 'Keyboard' },
     { path: 'local-notifications', title: 'Local Notifications' },
     { path: 'network', title: 'Network' },
-    { path: 'share', title: 'Share' },
+    { path: 'share', title: 'Share' }
   ];
 
-  constructor(private platform: Platform, ) {
+  constructor(private platform: Platform) {
     if (this.platform.is('capacitor')) {
       SplashScreen.hide({
         fadeOutDuration: 0

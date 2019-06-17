@@ -6,17 +6,16 @@ const { Device } = Plugins;
 @Component({
   selector: 'app-device',
   templateUrl: './device.page.html',
-  styleUrls: ['./device.page.scss'],
+  styleUrls: ['./device.page.scss']
 })
 export class DevicePage implements OnInit {
   info: DeviceInfo;
   language: DeviceLanguageCodeResult;
 
-  constructor() { }
+  constructor() {}
 
   async ngOnInit() {
     this.info = await Device.getInfo();
     this.language = await Device.getLanguageCode();
   }
-
 }

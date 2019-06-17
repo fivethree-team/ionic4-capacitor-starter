@@ -7,18 +7,16 @@ const { Camera } = Plugins;
 @Component({
   selector: 'app-camera',
   templateUrl: './camera.page.html',
-  styleUrls: ['./camera.page.scss'],
+  styleUrls: ['./camera.page.scss']
 })
 export class CameraPage implements OnInit {
   image: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async takePicture() {
-
     try {
       const image = await Camera.getPhoto({
         quality: 70,
@@ -34,7 +32,6 @@ export class CameraPage implements OnInit {
   }
 
   async pickFromGallery() {
-
     try {
       const image = await Camera.getPhoto({
         quality: 70,
@@ -50,7 +47,6 @@ export class CameraPage implements OnInit {
   }
 
   async prompt() {
-
     try {
       const image = await Camera.getPhoto({
         quality: 70,
@@ -64,5 +60,4 @@ export class CameraPage implements OnInit {
       console.log('Error taking picture', err);
     }
   }
-
 }

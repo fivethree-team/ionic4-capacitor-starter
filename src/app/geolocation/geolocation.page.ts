@@ -3,18 +3,15 @@ import { Plugins, GeolocationPosition } from '@capacitor/core';
 
 const { Geolocation } = Plugins;
 
-
-
 @Component({
   selector: 'app-geolocation',
   templateUrl: './geolocation.page.html',
-  styleUrls: ['./geolocation.page.scss'],
+  styleUrls: ['./geolocation.page.scss']
 })
 export class GeolocationPage implements OnInit {
-
   coordinates: GeolocationPosition;
 
-  constructor() { }
+  constructor() {}
 
   async ngOnInit() {
     console.log('get initial geolocation');
@@ -39,5 +36,4 @@ export class GeolocationPage implements OnInit {
       }
     });
   }
-
 }

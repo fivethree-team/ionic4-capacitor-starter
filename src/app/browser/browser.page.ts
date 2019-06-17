@@ -3,19 +3,15 @@ import { Plugins } from '@capacitor/core';
 
 const { Browser } = Plugins;
 
-
-
 @Component({
   selector: 'app-browser',
   templateUrl: './browser.page.html',
-  styleUrls: ['./browser.page.scss'],
+  styleUrls: ['./browser.page.scss']
 })
 export class BrowserPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async openURL() {
     try {
@@ -29,7 +25,5 @@ export class BrowserPage implements OnInit {
     } catch (err) {
       console.log('Error opening browser: ', err);
     }
-
   }
-
 }

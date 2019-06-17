@@ -6,21 +6,19 @@ const { Network } = Plugins;
 @Component({
   selector: 'app-network',
   templateUrl: './network.page.html',
-  styleUrls: ['./network.page.scss'],
+  styleUrls: ['./network.page.scss']
 })
 export class NetworkPage implements OnInit {
   status: NetworkStatus;
 
-  constructor() { }
+  constructor() {}
 
   async ngOnInit() {
     this.status = await Network.getStatus();
 
-    Network.addListener('networkStatusChange', (status) => {
+    Network.addListener('networkStatusChange', status => {
       console.log('Network status changed', status);
       this.status = status;
     });
-
   }
-
 }

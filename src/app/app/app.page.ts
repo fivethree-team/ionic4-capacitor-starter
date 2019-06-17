@@ -3,16 +3,15 @@ import { Plugins, AppState } from '@capacitor/core';
 import { fromEvent, fromEventPattern } from 'rxjs';
 const { App } = Plugins;
 
-
 @Component({
   selector: 'app-app',
   templateUrl: './app.page.html',
-  styleUrls: ['./app.page.scss'],
+  styleUrls: ['./app.page.scss']
 })
 export class AppPage implements OnInit {
   output = '';
 
-  constructor(private change: ChangeDetectorRef) { }
+  constructor(private change: ChangeDetectorRef) {}
 
   async ngOnInit() {
     App.addListener('appStateChange', (state: AppState) => {
@@ -41,5 +40,4 @@ export class AppPage implements OnInit {
       this.change.detectChanges();
     });
   }
-
 }

@@ -6,18 +6,17 @@ const { Keyboard } = Plugins;
 @Component({
   selector: 'app-keyboard',
   templateUrl: './keyboard.page.html',
-  styleUrls: ['./keyboard.page.scss'],
+  styleUrls: ['./keyboard.page.scss']
 })
 export class KeyboardPage implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    window.addEventListener('keyboardWillShow', (e) => {
+    window.addEventListener('keyboardWillShow', e => {
       console.log('keyboard will show with height', e);
     });
 
-    window.addEventListener('keyboardDidShow', (e) => {
+    window.addEventListener('keyboardDidShow', e => {
       console.log('keyboard did show with height', e);
     });
 
@@ -28,7 +27,6 @@ export class KeyboardPage implements OnInit {
     window.addEventListener('keyboardDidHide', () => {
       console.log('keyboard did hide');
     });
-
   }
 
   async show() {
@@ -46,5 +44,4 @@ export class KeyboardPage implements OnInit {
   async hideAccessoryBar() {
     return Keyboard.setAccessoryBarVisible({ isVisible: false });
   }
-
 }

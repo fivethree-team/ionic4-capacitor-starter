@@ -7,15 +7,13 @@ const { App, BackgroundTask, LocalNotifications } = Plugins;
 @Component({
   selector: 'app-background-task',
   templateUrl: './background-task.page.html',
-  styleUrls: ['./background-task.page.scss'],
+  styleUrls: ['./background-task.page.scss']
 })
 export class BackgroundTaskPage implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    App.addListener('appStateChange', (state) => {
-
+    App.addListener('appStateChange', state => {
       if (!state.isActive) {
         // The app has become inactive. We should check if we have some work left to do, and, if so,
         // execute a background task that will allow us to finish that work before the OS
@@ -59,7 +57,5 @@ export class BackgroundTaskPage implements OnInit {
     } catch (err) {
       console.log('Error in Local Notifications', err);
     }
-
   }
-
 }
