@@ -75,3 +75,13 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+body.dark {
+  --ion-background-color: var(--ion-color-dark);
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: rgb(255, 255, 255);
+}
+
+body.light {
+  // using default light setting from ionic
+}

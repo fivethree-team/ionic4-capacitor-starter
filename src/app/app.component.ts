@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { ThemeState, Theme } from '@store/theme/theme.state';
+import { Component, Inject } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { Plugins, StatusBarStyle } from '@capacitor/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 const { SplashScreen, StatusBar } = Plugins;
 
 @Component({
@@ -9,6 +13,9 @@ const { SplashScreen, StatusBar } = Plugins;
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  @Select(ThemeState.theme)
+  theme: Observable<Theme>;
+
   public routes = [
     { path: 'accessibility', title: 'Accessibility' },
     { path: 'app', title: 'App' },
@@ -23,7 +30,11 @@ export class AppComponent {
     { path: 'share', title: 'Share' }
   ];
 
-  constructor(private platform: Platform) {
+  constructor(
+    private platform: Platform,
+    @Inject(DOCUMENT) private document: Document
+  ) {
+    this.setupTheme();
     if (this.platform.is('capacitor')) {
       SplashScreen.hide({
         fadeOutDuration: 0
@@ -33,5 +44,11 @@ export class AppComponent {
         color: '#000000'
       });
     }
+  }
+
+  setupTheme() {
+    this.theme.subscribe(currentTheme => {
+      this.document.body.className = currentTheme;
+    });
   }
 }
