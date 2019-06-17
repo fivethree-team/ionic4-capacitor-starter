@@ -7,6 +7,7 @@
 * Capacitor for Android, iOS and Electron
 * PWA Support
 * 🚀Statemanagement w/ [NGXS](https://ngxs.gitbook.io/ngxs/)
+* 🌐 i18n 
 * 🌑☀️ Dark/Light Mode
 
 

@@ -1,3 +1,4 @@
+import { ChangeLanguage } from './../store/language/language.actions';
 import { ChangeTheme } from './../store/theme/theme.actions';
 import { Component } from '@angular/core';
 import { ThemeState, Theme } from '@store/theme/theme.state';
@@ -18,4 +19,7 @@ export class HomePage {
 
   @Dispatch()
   onChangeThemeClick = () => new ChangeTheme();
+
+  @Dispatch()
+  onChangeLanguageClick = () => new ChangeLanguage();
 }
