@@ -2,6 +2,14 @@
 🤩 Starter project including API Examples, PWA, CI using fastlane and easy to use scripts.
 ---
 
+## Features
+
+* Capacitor for Android, iOS and Electron
+* PWA Support
+* 🚀Statemanagement w/ [NGXS](https://ngxs.gitbook.io/ngxs/)
+* 🌑☀️ Dark/Light Mode
+
+
 *⚠ This project is under active development and not production ready yet.*
 
 ## Development
