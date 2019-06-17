@@ -1,8 +1,9 @@
 {
   "name": "capacitor",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Fivethree Team",
+  "homepage": "https://fivethree.io/",
+  "description": "Ionic 4 starter",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -68,6 +69,5 @@
     "ts-node": "~8.2.0",
     "tslint": "~5.17.0",
     "typescript": "~3.1.6"
-  },
-  "description": "An Ionic project"
+  }
 }
