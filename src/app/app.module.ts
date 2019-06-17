@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { NgxsStoreModule } from '@store/store.module';
+import { environment } from '@environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    })
+    }),
+    NgxsStoreModule
   ],
   providers: [
     StatusBar,

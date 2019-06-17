@@ -11,6 +11,16 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
+    "paths": {
+      "@components/*": ["src/app/components/*"],
+      "@environments/*": ["src/environments/*"],
+      "@guards/*": ["src/app/guards/*"],
+      "@interceptors/*": ["src/app/interceptors/*"],
+      "@pipes/*": ["src/app/pipes/*"],
+      "@services/*": ["src/app/services/*"],
+      "@store/*": ["src/app/store/*"],
+      "@utils/*": ["src/app/utils/*"]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],
