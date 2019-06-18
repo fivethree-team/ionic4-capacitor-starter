@@ -1,5 +1,5 @@
 # Ionic 4 and Capacitor Starter Project
-🤩 Starter project including API Examples, PWA, CI using fastlane and easy to use scripts.
+🤩 Starter project including API Examples, PWA, fastlane and more.
 ---
 ## Usage
 
