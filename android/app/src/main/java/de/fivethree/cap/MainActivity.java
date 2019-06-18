@@ -1,4 +1,4 @@
-package de.fivethree.lib;
+package de.fivethree.cap;
 
 import android.os.Bundle;
 

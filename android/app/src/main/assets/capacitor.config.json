@@ -1,7 +1,7 @@
 {
-  "appId": "de.fivethree.cap",
-  "appName": "capacitor",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www"
+    "appId": "de.fivethree.cap",
+    "appName": "fivethree/ionic4-starter",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www"
 }

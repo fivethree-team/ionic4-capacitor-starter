@@ -30,9 +30,17 @@ const params_1 = require("./params");
 const screenshots_1 = require("./screenshots");
 const ora_1 = __importDefault(require("ora"));
 let Scripts = class Scripts {
-    init(ctx) {
+    init(n, id, ctx) {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.updatePackageJSON(ctx, n);
+            yield this.updateCapacitorConfig(ctx, n, id);
+            yield this.updateFastlaneFile(ctx, 'Fastfile', n, id);
+            yield this.updateFastlaneFile(ctx, 'Matchfile', n, id);
+            yield this.exec(`rm -rf ${ctx.directory}/../android ${ctx.directory}/../ios ${ctx.directory}/../electron`, true);
             yield this.exec(`cd ${ctx.directory}/../ && npm install && ng run app:build`, true);
+            yield this.exec(`cd ${ctx.directory}/../ && npx cap add android`, true);
+            yield this.exec(`cd ${ctx.directory}/../ && npx cap add ios`, true);
+            yield this.exec(`cd ${ctx.directory}/../ && npx cap add electron`, true);
             yield this.exec(`cd ${ctx.directory}/../ && npx cap copy`, true);
         });
     }
@@ -50,7 +58,7 @@ let Scripts = class Scripts {
                 yield this.exec(`cd ${ctx.directory}/../android/ && ./gradlew build`, true);
             }
             else if (plt === 'ios') {
-                yield this.exec(`cd ${ctx.directory}/../ios/App && fastlane build`, true);
+                yield this.exec(`cd ${ctx.directory}/../ && fastlane build`, true);
             }
         });
     }
@@ -95,6 +103,27 @@ let Scripts = class Scripts {
             yield browser.close();
         });
     }
+    updatePackageJSON(ctx, appName) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const packageJSON = yield this.parseJSON(`${ctx.directory}/../package.json`);
+            packageJSON.name = appName;
+            yield this.writeJSON(`${ctx.directory}/../package.json`, packageJSON);
+        });
+    }
+    updateCapacitorConfig(ctx, appName, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const capacitorConfig = yield this.parseJSON(`${ctx.directory}/../capacitor.config.json`);
+            capacitorConfig.appName = appName;
+            capacitorConfig.appId = id;
+            yield this.writeJSON(`${ctx.directory}/../capacitor.config.json`, capacitorConfig);
+        });
+    }
+    updateFastlaneFile(ctx, file, appName, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const fileContents = yield this.readFile(`${ctx.directory}/../fastlane/${file}`);
+            yield this.writeFile(`${ctx.directory}/../fastlane/${file}`, fileContents.replace(new RegExp('de.fivethree.cap', 'g'), id));
+        });
+    }
     onError(ctx, err) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('Error happenend while executing command', ctx.api.getLatestHistoryEntry().latest.name, err);
@@ -109,9 +138,9 @@ let Scripts = class Scripts {
 __decorate([
     billy_core_1.usesPlugins(billy_plugin_core_1.CorePlugin),
     billy_core_1.Command('init the repo'),
-    __param(0, billy_core_1.context()),
+    __param(0, billy_core_1.param(params_1.name)), __param(1, billy_core_1.param(params_1.appID)), __param(2, billy_core_1.context()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [Object, Object, Object]),
     __metadata("design:returntype", Promise)
 ], Scripts.prototype, "init", null);
 __decorate([
@@ -142,6 +171,33 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], Scripts.prototype, "screenshots", null);
+__decorate([
+    billy_core_1.Action({
+        addToHistory: true,
+        description: (ctx, appName) => `Updated package.json with name ${appName}`
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], Scripts.prototype, "updatePackageJSON", null);
+__decorate([
+    billy_core_1.Action({
+        addToHistory: true,
+        description: (ctx, appName) => `Updated capacitor config with name ${appName}`
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, String]),
+    __metadata("design:returntype", Promise)
+], Scripts.prototype, "updateCapacitorConfig", null);
+__decorate([
+    billy_core_1.Action({
+        addToHistory: true,
+        description: (ctx, id, file) => `Updated ${file} with app id ${id}.`
+    }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, String, String]),
+    __metadata("design:returntype", Promise)
+], Scripts.prototype, "updateFastlaneFile", null);
 __decorate([
     billy_core_1.Hook(billy_core_1.onError),
     __param(0, billy_core_1.context()), __param(1, billy_core_1.error()),

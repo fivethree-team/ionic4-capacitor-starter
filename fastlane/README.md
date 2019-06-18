@@ -21,9 +21,9 @@ or alternatively using `brew cask install fastlane`
 fastlane ios build
 ```
 Build ios and sign ipa
-### ios produce
+### ios produce_app
 ```
-fastlane ios produce
+fastlane ios produce_app
 ```
 produce app in appstore connect
 

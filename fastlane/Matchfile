@@ -4,7 +4,7 @@ storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
-app_identifier(["de.fivethree.capacitor"])
+app_identifier(["de.fivethree.cap"])
 username("gary.grossgarten@gmail.com") # Your Apple Developer Portal username
 team_id("T8A2X5T48H")
 
