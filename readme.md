@@ -1,6 +1,10 @@
 # Ionic 4 and Capacitor Starter Project
 🤩 Starter project including API Examples, PWA, CI using fastlane and easy to use scripts.
 ---
+## Usage
+
+Use **`npm init @fivethree/ionic`** to scaffold your new project.
+You will be prompted for your app's name and id. 
 
 ## Features
 
