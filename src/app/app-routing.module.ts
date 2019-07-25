@@ -3,40 +3,40 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'app', loadChildren: './app/app.module#AppPageModule' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+  { path: 'app', loadChildren: () => import('./app/app.module').then(m => m.AppPageModule) },
   {
     path: 'background-task',
     loadChildren:
-      './background-task/background-task.module#BackgroundTaskPageModule'
+      () => import('./background-task/background-task.module').then(m => m.BackgroundTaskPageModule)
   },
   {
     path: 'browser',
-    loadChildren: './browser/browser.module#BrowserPageModule'
+    loadChildren: () => import('./browser/browser.module').then(m => m.BrowserPageModule)
   },
-  { path: 'camera', loadChildren: './camera/camera.module#CameraPageModule' },
-  { path: 'device', loadChildren: './device/device.module#DevicePageModule' },
+  { path: 'camera', loadChildren: () => import('./camera/camera.module').then(m => m.CameraPageModule) },
+  { path: 'device', loadChildren: () => import('./device/device.module').then(m => m.DevicePageModule) },
   {
     path: 'geolocation',
-    loadChildren: './geolocation/geolocation.module#GeolocationPageModule'
+    loadChildren: () => import('./geolocation/geolocation.module').then(m => m.GeolocationPageModule)
   },
   {
     path: 'keyboard',
-    loadChildren: './keyboard/keyboard.module#KeyboardPageModule'
+    loadChildren: () => import('./keyboard/keyboard.module').then(m => m.KeyboardPageModule)
   },
   {
     path: 'local-notifications',
     loadChildren:
-      './local-notifications/local-notifications.module#LocalNotificationsPageModule'
+      () => import('./local-notifications/local-notifications.module').then(m => m.LocalNotificationsPageModule)
   },
   {
     path: 'network',
-    loadChildren: './network/network.module#NetworkPageModule'
+    loadChildren: () => import('./network/network.module').then(m => m.NetworkPageModule)
   },
-  { path: 'share', loadChildren: './share/share.module#SharePageModule' },
+  { path: 'share', loadChildren: () => import('./share/share.module').then(m => m.SharePageModule) },
   {
     path: 'accessibility',
-    loadChildren: './accessibility/accessibility.module#AccessibilityPageModule'
+    loadChildren: () => import('./accessibility/accessibility.module').then(m => m.AccessibilityPageModule)
   }
 ];
 
