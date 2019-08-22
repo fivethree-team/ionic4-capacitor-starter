@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Plugins, NetworkStatus } from '@capacitor/core';
+import { bindCallback } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 const { Network } = Plugins;
 
@@ -16,9 +18,10 @@ export class NetworkPage implements OnInit {
   async ngOnInit() {
     this.status = await Network.getStatus();
 
-    Network.addListener('networkStatusChange', status => {
-      console.log('Network status changed', status);
-      this.status = status;
-    });
+
+    const callback = bindCallback(Network.addListener);
+    callback('networkStatusChange')
+      .pipe(tap(ev => (this.status = ev[0])))
+      .subscribe();
   }
 }

@@ -27,7 +27,9 @@ export class AppComponent {
     { path: 'keyboard', title: 'Keyboard' },
     { path: 'local-notifications', title: 'Local Notifications' },
     { path: 'network', title: 'Network' },
-    { path: 'share', title: 'Share' }
+    { path: 'share', title: 'Share' },
+    { path: 'video', title: 'Video' },
+    { path: 'youtube', title: 'YouTube' }
   ];
 
   constructor(

@@ -37,7 +37,9 @@ const routes: Routes = [
   {
     path: 'accessibility',
     loadChildren: './accessibility/accessibility.module#AccessibilityPageModule'
-  }
+  },
+  { path: 'youtube', loadChildren: './youtube/youtube.module#YoutubePageModule' },
+  { path: 'video', loadChildren: './video/video.module#VideoPageModule' }
 ];
 
 @NgModule({
